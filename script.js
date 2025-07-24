@@ -1,7 +1,7 @@
 // Datos simulados para la aplicación
-let encuestas = [];
+let encuestas = JSON.parse(localStorage.getItem('encuestas')) || [];
 let currentSurveyId = null;
-let filteredEncuestas = []; // Para filtros
+let filteredEncuestas = [...encuestas]; // Para filtros
 
 // DOM Elements
 const inicioScreen = document.getElementById('inicioScreen');
@@ -253,6 +253,7 @@ surveyForm.addEventListener('submit', function(e) {
     
     // Guardar encuesta
     encuestas.push(encuesta);
+    localStorage.setItem('encuestas', JSON.stringify(encuestas));
     
     // Mostrar confirmación
     showScreen(confirmationScreen);
@@ -478,11 +479,11 @@ function createCharts() {
         const ctx1 = document.getElementById('categoriasChart').getContext('2d');
         categoriasChart = new Chart(ctx1, {
             type: 'bar',
-             {
+            data: {
                 labels: ['Percepción', 'Comunicación', 'Reporte', 'Capacitación', 'Condiciones', 'Participación', 'Mejora'],
                 datasets: [{
                     label: 'Promedio por Categoría',
-                     [0, 0, 0, 0, 0, 0, 0],
+                    data: [0, 0, 0, 0, 0, 0, 0],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.7)',
                         'rgba(54, 162, 235, 0.7)',
@@ -520,10 +521,10 @@ function createCharts() {
         const ctx2 = document.getElementById('calificacionesChart').getContext('2d');
         calificacionesChart = new Chart(ctx2, {
             type: 'pie',
-             {
+            data: {
                 labels: ['1 - Muy en desacuerdo', '2 - En desacuerdo', '3 - Neutral', '4 - De acuerdo', '5 - Muy de acuerdo'],
                 datasets: [{
-                     [0, 0, 0, 0, 0],
+                    data: [0, 0, 0, 0, 0],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.7)',
                         'rgba(255, 159, 64, 0.7)',
@@ -551,7 +552,7 @@ function createCharts() {
         const ctx3 = document.getElementById('tendenciaChart').getContext('2d');
         tendenciaChart = new Chart(ctx3, {
             type: 'line',
-             {
+            data: {
                 labels: [],
                 datasets: [{
                     label: 'Promedio General',
@@ -971,7 +972,20 @@ function generatePDFContent() {
 document.addEventListener('DOMContentLoaded', function() {
     // Mostrar pantalla de inicio
     showScreen(inicioScreen);
+    
+    // Cargar Chart.js
+    loadChartJS();
 });
+
+// Cargar Chart.js dinámicamente
+function loadChartJS() {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+    script.onload = function() {
+        console.log('Chart.js cargado correctamente');
+    };
+    document.head.appendChild(script);
+}
 
 // Función para cargar datos de ejemplo (opcional)
 function cargarDatosEjemplo() {
@@ -1029,6 +1043,9 @@ function cargarDatosEjemplo() {
     ];
     
     // Guardar datos de ejemplo
+    localStorage.setItem('encuestas', JSON.stringify(encuestasEjemplo));
+    
+    // Recargar datos
     encuestas = encuestasEjemplo;
     
     alert('Datos de ejemplo cargados correctamente');
