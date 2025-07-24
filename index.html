@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima de Seguridad del Paciente - Recuperar SA IPS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Header -->
+        <header class="bg-primary text-white p-3 mb-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <img src="https://via.placeholder.com/150x50/009688/FFFFFF?text=LOGO" alt="Recuperar S.A. IPS" height="50">
+                    <p class="mb-0 small">Clima de Seguridad del Paciente - Cali, Valle</p>
+                </div>
+                <div class="text-end">
+                        <i class="fas fa-user-shield"></i> Administrador
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main id="mainContent">
+            <!-- Pantalla de Inicio -->
+            <div id="inicioScreen" class="screen">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6">
+                        <div class="card shadow">
+                            <div class="card-header bg-success text-white text-center">
+                                <h3 class="mb-0">
+                                    <i class="fas fa-clipboard-list"></i> Encuesta de Clima de Seguridad
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-center">
+                                    Bienvenido(a) al clima de seguridad del paciente. 
+                                    Su opinión es muy importante para mejorar nuestra atención.
+                                </p>
+                                <p class="text-center text-muted small">
+                                    Esta encuesta es anónima. No se registrarán datos personales.
+                                </p>
+                                
+                                <div class="d-grid">
+                                    <button class="btn btn-primary btn-lg" id="startSurveyBtn">
+                                        <i class="fas fa-play"></i> Iniciar Encuesta
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pantalla de Encuesta -->
+            <div id="surveyScreen" class="screen d-none">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="card shadow">
+                            <div class="card-header bg-warning text-dark">
+                                <h4 class="mb-0">
+                                    <i class="fas fa-file-alt"></i> Encuesta de Clima de Seguridad del Paciente
+                                </h4>
+                                <p class="mb-0 small">Para colaboradores de Recuperar S.A. IPS</p>
+                            </div>
+                            <!-- Escala explicada -->
+                            <div class="card-body bg-light">
+                                <div class="row text-center">
+                                    <div class="col-2"><strong>1</strong><br><small>Muy en desacuerdo</small></div>
+                                    <div class="col-2"><strong>2</strong><br><small>En desacuerdo</small></div>
+                                    <div class="col-2"><strong>3</strong><br><small>Neutral</small></div>
+                                    <div class="col-2"><strong>4</strong><br><small>De acuerdo</small></div>
+                                    <div class="col-2"><strong>5</strong><br><small>Muy de acuerdo</small></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form id="surveyForm">
+                                    <!-- Sección 1: Percepción sobre la cultura de seguridad -->
+                                    <div class="section mb-4">
+                                        <h5 class="border-bottom pb-2">
+                                            <i class="fas fa-shield-alt"></i> 1. Percepción sobre la cultura de seguridad en la IPS
+                                        </h5>
+                                        <div class="question mb-3">
+                                            <p>1.1 ¿Considera que en Recuperar S.A. IPS se prioriza la seguridad del paciente como un valor institucional fundamental?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q1_1" value="1" id="q1_1-1"><label for="q1_1-1">1</label>
+                                                <input type="radio" name="q1_1" value="2" id="q1_1-2"><label for="q1_1-2">2</label>
+                                                <input type="radio" name="q1_1" value="3" id="q1_1-3"><label for="q1_1-3">3</label>
+                                                <input type="radio" name="q1_1" value="4" id="q1_1-4"><label for="q1_1-4">4</label>
+                                                <input type="radio" name="q1_1" value="5" id="q1_1-5"><label for="q1_1-5">5</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <p>1.2 ¿Cree que los procedimientos y sistemas establecidos en la IPS son efectivos para prevenir errores que puedan causar daño a los pacientes?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q1_2" value="1" id="q1_2-1"><label for="q1_2-1">1</label>
+                                                <input type="radio" name="q1_2" value="2" id="q1_2-2"><label for="q1_2-2">2</label>
+                                                <input type="radio" name="q1_2" value="3" id="q1_2-3"><label for="q1_2-3">3</label>
+                                                <input type="radio" name="q1_2" value="4" id="q1_2-4"><label for="q1_2-4">4</label>
+                                                <input type="radio" name="q1_2" value="5" id="q1_2-5"><label for="q1_2-5">5</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <p>1.3 ¿Siente que la gerencia de la IPS apoya activamente las iniciativas para mejorar la seguridad del paciente?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q1_3" value="1" id="q1_3-1"><label for="q1_3-1">1</label>
+                                                <input type="radio" name="q1_3" value="2" id="q1_3-2"><label for="q1_3-2">2</label>
+                                                <input type="radio" name="q1_3" value="3" id="q1_3-3"><label for="q1_3-3">3</label>
+                                                <input type="radio" name="q1_3" value="4" id="q1_3-4"><label for="q1_3-4">4</label>
+                                                <input type="radio" name="q1_3" value="5" id="q1_3-5"><label for="q1_3-5">5</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <p>1.4 ¿En su unidad o área, se discuten regularmente formas de prevenir errores y mejorar la seguridad del paciente?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q1_4" value="1" id="q1_4-1"><label for="q1_4-1">1</label>
+                                                <input type="radio" name="q1_4" value="2" id="q1_4-2"><label for="q1_4-2">2</label>
+                                                <input type="radio" name="q1_4" value="3" id="q1_4-3"><label for="q1_4-3">3</label>
+                                                <input type="radio" name="q1_4" value="4" id="q1_4-4"><label for="q1_4-4">4</label>
+                                                <input type="radio" name="q1_4" value="5" id="q1_4-5"><label for="q1_4-5">5</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sección 2: Comunicación y trabajo en equipo -->
+                                    <div class="section mb-4">
+                                        <h5 class="border-bottom pb-2">
+                                            <i class="fas fa-users"></i> 2. Comunicación y trabajo en equipo
+                                        </h5>
+                                        <div class="question mb-3">
+                                            <p>2.1 ¿Los colaboradores de su área comunican abiertamente los errores o incidentes sin temor a represalias?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q2_1" value="1" id="q2_1-1"><label for="q2_1-1">1</label>
+                                                <input type="radio" name="q2_1" value="2" id="q2_1-2"><label for="q2_1-2">2</label>
+                                                <input type="radio" name="q2_1" value="3" id="q2_1-3"><label for="q2_1-3">3</label>
+                                                <input type="radio" name="q2_1" value="4" id="q2_1-4"><label for="q2_1-4">4</label>
+                                                <input type="radio" name="q2_1" value="5" id="q2_1-5"><label for="q2_1-5">5</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <p>2.2 ¿Considera que hay una buena coordinación y trabajo en equipo entre las diferentes áreas de la IPS para garantizar la seguridad del paciente?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q2_2" value="1" id="q2_2-1"><label for="q2_2-1">1</label>
+                                                <input type="radio" name="q2_2" value="2" id="q2_2-2"><label for="q2_2-2">2</label>
+                                                <input type="radio" name="q2_2" value="3" id="q2_2-3"><label for="q2_2-3">3</label>
+                                                <input type="radio" name="q2_2" value="4" id="q2_2-4"><label for="q2_2-4">4</label>
+                                                <input type="radio" name="q2_2" value="5" id="q2_2-5"><label for="q2_2-5">5</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <p>2.3 ¿Se le informa oportunamente sobre los errores o eventos adversos que ocurren en su unidad o en la IPS?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q2_3" value="1" id="q2_3-1"><label for="q2_3-1">1</label>
+                                                <input type="radio" name="q2_3" value="2" id="q2_3-2"><label for="q2_3-2">2</label>
+                                                <input type="radio" name="q2_3" value="3" id="q2_3-3"><label for="q2_3-3">3</label>
+                                                <input type="radio" name="q2_3" value="4" id="q2_3-4"><label for="q2_3-4">4</label>
+                                                <input type="radio" name="q2_3" value="5" id="q2_3-5"><label for="q2_3-5">5</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <p>2.4 ¿Los colaboradores de su área se sienten cómodos pidiendo ayuda o aclaraciones cuando no están seguros de un procedimiento?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q2_4" value="1" id="q2_4-1"><label for="q2_4-1">1</label>
+                                                <input type="radio" name="q2_4" value="2" id="q2_4-2"><label for="q2_4-2">2</label>
+                                                <input type="radio" name="q2_4" value="3" id="q2_4-3"><label for="q2_4-3">3</label>
+                                                <input type="radio" name="q2_4" value="4" id="q2_4-4"><label for="q2_4-4">4</label>
+                                                <input type="radio" name="q2_4" value="5" id="q2_4-5"><label for="q2_4-5">5</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sección 3: Reporte de eventos adversos -->
+                                    <div class="section mb-4">
+                                        <h5 class="border-bottom pb-2">
+                                            <i class="fas fa-exclamation-triangle"></i> 3. Reporte de eventos adversos
+                                        </h5>
+                                        <div class="question mb-3">
+                                            <p>3.1 ¿Siente que puede reportar un evento adverso o un error sin que esto genere consecuencias negativas para usted?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q3_1" value="1" id="q3_1-1"><label for="q3_1-1">1</label>
+                                                <input type="radio" name="q3_1" value="2" id="q3_1-2"><label for="q3_1-2">2</label>
+                                                <input type="radio" name="q3_1" value="3" id="q3_1-3"><label for="q3_1-3">3</label>
+                                                <input type="radio" name="q3_1" value="4" id="q3_1-4"><label for="q3_1-4">4</label>
+                                                <input type="radio" name="q3_1" value="5" id="q3_1-5"><label for="q3_1-5">5</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <p>3.2 ¿En su área, se notifican los errores que son descubiertos y corregidos antes de que afecten al paciente?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q3_2" value="1" id="q3_2-1"><label for="q3_2-1">1</label>
+                                                <input type="radio" name="q3_2" value="2" id="q3_2-2"><label for="q3_2-2">2</label>
+                                                <input type="radio" name="q3_2" value="3" id="q3_2-3"><label for="q3_2-3">3</label>
+                                                <input type="radio" name="q3_2" value="4" id="q3_2-4"><label for="q3_2-4">4</label>
+                                                <input type="radio" name="q3_2" value="5" id="q3_2-5"><label for="q3_2-5">5</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <p>3.3 ¿Cree que el sistema de reporte de eventos adversos en la IPS es claro, accesible y fácil de usar?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q3_3" value="1" id="q3_3-1"><label for="q3_3-1">1</label>
+                                                <input type="radio" name="q3_3" value="2" id="q3_3-2"><label for="q3_3-2">2</label>
+                                                <input type="radio" name="q3_3" value="3" id="q3_3-3"><label for="q3_3-3">3</label>
+                                                <input type="radio" name="q3_3" value="4" id="q3_3-4"><label for="q3_3-4">4</label>
+                                                <input type="radio" name="q3_3" value="5" id="q3_3-5"><label for="q3_3-5">5</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <p>3.4 ¿Recibe retroalimentación sobre los eventos adversos reportados y las medidas tomadas para prevenirlos?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q3_4" value="1" id="q3_4-1"><label for="q3_4-1">1</label>
+                                                <input type="radio" name="q3_4" value="2" id="q3_4-2"><label for="q3_4-2">2</label>
+                                                <input type="radio" name="q3_4" value="3" id="q3_4-3"><label for="q3_4-3">3</label>
+                                                <input type="radio" name="q3_4" value="4" id="q3_4-4"><label for="q3_4-4">4</label>
+                                                <input type="radio" name="q3_4" value="5" id="q3_4-5"><label for="q3_4-5">5</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sección 4: Capacitación y formación -->
+                                    <div class="section mb-4">
+                                        <h5 class="border-bottom pb-2">
+                                            <i class="fas fa-graduation-cap"></i> 4. Capacitación y formación en seguridad del paciente
+                                        </h5>
+                                        <div class="question mb-3">
+                                            <p>4.1 ¿Ha recibido capacitación reciente sobre las políticas y procedimientos de seguridad del paciente establecidos por la normatividad colombiana?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q4_1" value="1" id="q4_1-1"><label for="q4_1-1">1</label>
+                                                <input type="radio" name="q4_1" value="2" id="q4_1-2"><label for="q4_1-2">2</label>
+                                                <input type="radio" name="q4_1" value="3" id="q4_1-3"><label for="q4_1-3">3</label>
+                                                <input type="radio" name="q4_1" value="4" id="q4_1-4"><label for="q4_1-4">4</label>
+                                                <input type="radio" name="q4_1" value="5" id="q4_1-5"><label for="q4_1-5">5</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <p>4.2 ¿Considera que la capacitación en seguridad del paciente es suficiente para desempeñar sus funciones de manera segura?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q4_2" value="1" id="q4_2-1"><label for="q4_2-1">1</label>
+                                                <input type="radio" name="q4_2" value="2" id="q4_2-2"><label for="q4_2-2">2</label>
+                                                <input type="radio" name="q4_2" value="3" id="q4_2-3"><label for="q4_2-3">3</label>
+                                                <input type="radio" name="q4_2" value="4" id="q4_2-4"><label for="q4_2-4">4</label>
+                                                <input type="radio" name="q4_2" value="5" id="q4_2-5"><label for="q4_2-5">5</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <p>4.3 ¿Se le ha proporcionado información clara sobre cómo identificar y gestionar riesgos en su área de trabajo?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q4_3" value="1" id="q4_3-1"><label for="q4_3-1">1</label>
+                                                <input type="radio" name="q4_3" value="2" id="q4_3-2"><label for="q4_3-2">2</label>
+                                                <input type="radio" name="q4_3" value="3" id="q4_3-3"><label for="q4_3-3">3</label>
+                                                <input type="radio" name="q4_3" value="4" id="q4_3-4"><label for="q4_3-4">4</label>
+                                                <input type="radio" name="q4_3" value="5" id="q4_3-5"><label for="q4_3-5">5</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sección 5: Condiciones laborales -->
+                                    <div class="section mb-4">
+                                        <h5 class="border-bottom pb-2">
+                                            <i class="fas fa-briefcase"></i> 5. Condiciones laborales y su impacto en la seguridad
+                                        </h5>
+                                        <div class="question mb-3">
+                                            <p>5.1 ¿Cree que el nivel de carga laboral en su área permite prestar atención segura a los pacientes?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q5_1" value="1" id="q5_1-1"><label for="q5_1-1">1</label>
+                                                <input type="radio" name="q5_1" value="2" id="q5_1-2"><label for="q5_1-2">2</label>
+                                                <input type="radio" name="q5_1" value="3" id="q5_1-3"><label for="q5_1-3">3</label>
+                                                <input type="radio" name="q5_1" value="4" id="q5_1-4"><label for="q5_1-4">4</label>
+                                                <input type="radio" name="q5_1" value="5" id="q5_1-5"><label for="q5_1-5">5</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <p>5.2 ¿Considera que la dotación de recursos (equipos, insumos, personal) es adecuada para garantizar la seguridad del paciente?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q5_2" value="1" id="q5_2-1"><label for="q5_2-1">1</label>
+                                                <input type="radio" name="q5_2" value="2" id="q5_2-2"><label for="q5_2-2">2</label>
+                                                <input type="radio" name="q5_2" value="3" id="q5_2-3"><label for="q5_2-3">3</label>
+                                                <input type="radio" name="q5_2" value="4" id="q5_2-4"><label for="q5_2-4">4</label>
+                                                <input type="radio" name="q5_2" value="5" id="q5_2-5"><label for="q5_2-5">5</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <p>5.3 ¿Siente que el ambiente laboral fomenta la confianza y la colaboración para prevenir errores?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q5_3" value="1" id="q5_3-1"><label for="q5_3-1">1</label>
+                                                <input type="radio" name="q5_3" value="2" id="q5_3-2"><label for="q5_3-2">2</label>
+                                                <input type="radio" name="q5_3" value="3" id="q5_3-3"><label for="q5_3-3">3</label>
+                                                <input type="radio" name="q5_3" value="4" id="q5_3-4"><label for="q5_3-4">4</label>
+                                                <input type="radio" name="q5_3" value="5" id="q5_3-5"><label for="q5_3-5">5</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sección 6: Participación del paciente -->
+                                    <div class="section mb-4">
+                                        <h5 class="border-bottom pb-2">
+                                            <i class="fas fa-user-injured"></i> 6. Participación del paciente en su seguridad
+                                        </h5>
+                                        <div class="question mb-3">
+                                            <p>6.1 ¿Se incentiva en la IPS la participación activa de los pacientes y sus familias en los procesos de atención para mejorar la seguridad?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q6_1" value="1" id="q6_1-1"><label for="q6_1-1">1</label>
+                                                <input type="radio" name="q6_1" value="2" id="q6_1-2"><label for="q6_1-2">2</label>
+                                                <input type="radio" name="q6_1" value="3" id="q6_1-3"><label for="q6_1-3">3</label>
+                                                <input type="radio" name="q6_1" value="4" id="q6_1-4"><label for="q6_1-4">4</label>
+                                                <input type="radio" name="q6_1" value="5" id="q6_1-5"><label for="q6_1-5">5</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <p>6.2 ¿Cree que los pacientes reciben información clara y suficiente sobre los riesgos y cuidados relacionados con su tratamiento?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q6_2" value="1" id="q6_2-1"><label for="q6_2-1">1</label>
+                                                <input type="radio" name="q6_2" value="2" id="q6_2-2"><label for="q6_2-2">2</label>
+                                                <input type="radio" name="q6_2" value="3" id="q6_2-3"><label for="q6_2-3">3</label>
+                                                <input type="radio" name="q6_2" value="4" id="q6_2-4"><label for="q6_2-4">4</label>
+                                                <input type="radio" name="q6_2" value="5" id="q6_2-5"><label for="q6_2-5">5</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sección 7: Mejora continua -->
+                                    <div class="section mb-4">
+                                        <h5 class="border-bottom pb-2">
+                                            <i class="fas fa-sync-alt"></i> 7. Mejora continua y cumplimiento normativo
+                                        </h5>
+                                        <div class="question mb-3">
+                                            <p>7.1 ¿Considera que Recuperar S.A. IPS implementa acciones concretas para mejorar la seguridad del paciente basadas en el análisis de eventos adversos?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q7_1" value="1" id="q7_1-1"><label for="q7_1-1">1</label>
+                                                <input type="radio" name="q7_1" value="2" id="q7_1-2"><label for="q7_1-2">2</label>
+                                                <input type="radio" name="q7_1" value="3" id="q7_1-3"><label for="q7_1-3">3</label>
+                                                <input type="radio" name="q7_1" value="4" id="q7_1-4"><label for="q7_1-4">4</label>
+                                                <input type="radio" name="q7_1" value="5" id="q7_1-5"><label for="q7_1-5">5</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <p>7.2 ¿Está familiarizado con los lineamientos de la Política Nacional de Seguridad del Paciente y su aplicación en la IPS?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q7_2" value="1" id="q7_2-1"><label for="q7_2-1">1</label>
+                                                <input type="radio" name="q7_2" value="2" id="q7_2-2"><label for="q7_2-2">2</label>
+                                                <input type="radio" name="q7_2" value="3" id="q7_2-3"><label for="q7_2-3">3</label>
+                                                <input type="radio" name="q7_2" value="4" id="q7_2-4"><label for="q7_2-4">4</label>
+                                                <input type="radio" name="q7_2" value="5" id="q7_2-5"><label for="q7_2-5">5</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <p>7.3 ¿Cree que la IPS actualiza regularmente sus procesos de seguridad del paciente para cumplir con la normatividad vigente (ej., Resolución 0312 de 2019)?</p>
+                                            <div class="rating">
+                                                <input type="radio" name="q7_3" value="1" id="q7_3-1"><label for="q7_3-1">1</label>
+                                                <input type="radio" name="q7_3" value="2" id="q7_3-2"><label for="q7_3-2">2</label>
+                                                <input type="radio" name="q7_3" value="3" id="q7_3-3"><label for="q7_3-3">3</label>
+                                                <input type="radio" name="q7_3" value="4" id="q7_3-4"><label for="q7_3-4">4</label>
+                                                <input type="radio" name="q7_3" value="5" id="q7_3-5"><label for="q7_3-5">5</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sección 8: Pregunta abierta -->
+                                    <div class="section mb-4">
+                                        <h5 class="border-bottom pb-2">
+                                            <i class="fas fa-comment"></i> 8. Pregunta abierta
+                                        </h5>
+                                        <div class="mb-3">
+                                            <label class="form-label">8.1 ¿Qué acciones o mejoras sugeriría para fortalecer la cultura de seguridad del paciente en Recuperar S.A. IPS?</label>
+                                            <textarea class="form-control" name="mejoras_sugeridas" rows="4" placeholder="Escriba sus sugerencias aquí..."></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between">
+                                        <button type="button" class="btn btn-secondary" id="backToInicio">
+                                            <i class="fas fa-arrow-left"></i> Volver
+                                        </button>
+                                        <button type="submit" class="btn btn-success">
+                                            <i class="fas fa-paper-plane"></i> Enviar Encuesta
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pantalla de Confirmación -->
+            <div id="confirmationScreen" class="screen d-none">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6">
+                        <div class="card shadow text-center">
+                            <div class="card-header bg-success text-white">
+                                <h3 class="mb-0">
+                                    <i class="fas fa-check-circle"></i> ¡Encuesta Completada!
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-4">
+                                    <i class="fas fa-heartbeat text-success" style="font-size: 4rem;"></i>
+                                </div>
+                                <h4 class="mb-3">¡Gracias por su participación!</h4>
+                                <p class="lead">
+                                    Su opinión es muy valiosa para nosotros y nos ayudará a mejorar continuamente 
+                                    la seguridad y calidad de nuestra atención.
+                                </p>
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle"></i> 
+                                    Su encuesta ha sido registrada correctamente en nuestro sistema.
+                                </div>
+                                <button class="btn btn-primary" id="newSurveyBtn">
+                                    <i class="fas fa-plus"></i> Nueva Encuesta
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pantalla de Administración -->
+            <div id="adminScreen" class="screen d-none">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h2>
+                                <i class="fas fa-user-shield"></i> Panel de Administración
+                            </h2>
+                            <button class="btn btn-secondary" id="backToMain">
+                                <i class="fas fa-home"></i> Volver al Inicio
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card text-center bg-primary text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Encuestas</h5>
+                                <h2 id="totalEncuestas">0</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center bg-success text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Promedio Seguridad</h5>
+                                <h2 id="promedioSeguridad">0.0</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center bg-warning text-dark">
+                            <div class="card-body">
+                                <h5 class="card-title">Encuestas última semana</h5>
+                                <h2 id="encuestasSemana">0</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center bg-info text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Última encuesta</h5>
+                                <h2 id="ultimaEncuesta">-</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones de acción -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-success" id="exportPdfBtn">
+                                <i class="fas fa-file-pdf"></i> Exportar a PDF
+                            </button>
+                            <button class="btn btn-info" id="showDashboardBtn">
+                                <i class="fas fa-chart-bar"></i> Ver Dashboard
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow">
+                            <div class="card-header bg-secondary text-white">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-list"></i> Últimas Encuestas Registradas
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover">
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th>Fecha</th>
+                                                <th>Promedio General</th>
+                                                <th>Percepción</th>
+                                                <th>Comunicación</th>
+                                                <th>Reporte</th>
+                                                <th>Capacitación</th>
+                                                <th>Condiciones Laborales</th>
+                                                <th>Participación Paciente</th>
+                                                <th>Mejora Continua</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="encuestasTableBody">
+                                            <tr><td colspan="9" class="text-center">No hay encuestas registradas</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div id="dashboardSection" class="screen d-none">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h2>
+                                <i class="fas fa-chart-line"></i> Dashboard de Seguridad
+                            </h2>
+                            <button class="btn btn-secondary" id="backToAdminFromDashboard">
+                                <i class="fas fa-arrow-left"></i> Volver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filtros -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0"><i class="fas fa-filter"></i> Filtros</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Fecha Inicio</label>
+                                    <input type="date" class="form-control" id="fechaInicioFilter">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Fecha Fin</label>
+                                    <input type="date" class="form-control" id="fechaFinFilter">
+                                </div>
+                                <button class="btn btn-primary w-100" id="applyFiltersBtn">
+                                    <i class="fas fa-search"></i> Aplicar Filtros
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Estadísticas resumen -->
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="card text-center bg-success text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Promedio General</h5>
+                                        <h2 id="dashboardPromedioGeneral">0.0</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card text-center bg-info text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total Encuestas</h5>
+                                        <h2 id="dashboardTotalEncuestas">0</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card text-center bg-warning text-dark">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Mejor Categoría</h5>
+                                        <h2 id="dashboardMejorCategoria">-</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráficos -->
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card">
+                            <div class="card-header bg-secondary text-white">
+                                <h5 class="mb-0"><i class="fas fa-chart-bar"></i> Promedio por Categorías</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="categoriasChart" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 mb-4">
+                        <div class="card">
+                            <div class="card-header bg-secondary text-white">
+                                <h5 class="mb-0"><i class="fas fa-chart-pie"></i> Distribución de Calificaciones</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="calificacionesChart" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tendencia temporal -->
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="card">
+                            <div class="card-header bg-secondary text-white">
+                                <h5 class="mb-0"><i class="fas fa-chart-line"></i> Tendencia Temporal</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="tendenciaChart" height="200"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-dark text-white text-center p-3 mt-4">
+            <p class="mb-0">
+                <i class="fas fa-map-marker-alt"></i> Recuperar S.A. IPS - Cali, Valle del Cauca, Colombia
+            </p>
+            <p class="mb-0 small">
+                <i class="fas fa-phone"></i> 6024883333 ext 260 | 
+                <i class="fas fa-envelope"></i> directorcalidad@recuperarips.com
+            </p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
